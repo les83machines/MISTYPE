@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MISTYPE v27 — Experimental type studio</title>
+<title>MISTYPE v32 — Experimental type studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit}
 main{max-width:1500px;margin:auto;padding:34px 28px 60px}.intro{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:16px}.intro-copy{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap}.intro h1{white-space:nowrap}.eyebrow{font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:10px}.intro h1{font-size:clamp(25px,3vw,40px);letter-spacing:-.065em;line-height:1;margin:0;font-weight:800}.intro p{max-width:340px;color:#77766f;font-size:13px;line-height:1.55;margin:0}
 .toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:20px;flex-wrap:wrap}.tabs{display:flex;gap:4px}.tab{border:0;background:transparent;padding:9px 12px;font-size:10px;letter-spacing:.12em;font-weight:700;color:var(--muted)}.tab.active{background:var(--ink);color:white}.toolbar-right{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:11px}.count{font-variant-numeric:tabular-nums}
 .grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}.glyph{min-height:124px;background:var(--paper);border:1px solid var(--line);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;transition:border-color .15s,transform .15s}.glyph:hover{border-color:var(--ink);transform:translateY(-2px)}.glyph .symbol{width:100%;height:78px;display:flex;align-items:center;justify-content:center;font-family:"Montserrat",Arial,Helvetica,sans-serif;font-size:76px;line-height:1;color:#c7c5be;overflow:hidden}.glyph .symbol img{width:100%;height:100%;object-fit:contain}.glyph .label{position:absolute;bottom:9px;left:11px;font-size:9px;letter-spacing:.12em;color:var(--muted);font-weight:700}.glyph .state{position:absolute;bottom:9px;right:11px;font-size:8px;letter-spacing:.08em;color:#999}.glyph.done{background:#fff}.glyph.done .state{color:#718b13}.glyph.done .symbol{color:var(--ink)}
-.preview-wrap{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}.preview-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.preview-head h2{font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin:0}.preview-head span{font-size:10px;color:var(--muted)}.preview img{height:1em;width:auto;max-width:1.58em;object-fit:contain;vertical-align:-.13em;margin:0 .06em}.preview{background:var(--paper);border:1px solid var(--line);padding:16px 20px;min-height:86px;font-size:clamp(24px,4vw,48px);letter-spacing:.02em;line-height:1.35;overflow-wrap:anywhere}
+.preview-wrap{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}.preview-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.preview-head h2{font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin:0}.preview-head span{font-size:10px;color:var(--muted)}.preview img{height:1em;width:auto;max-width:1.58em;object-fit:contain;vertical-align:-.13em;margin:0 .06em}.preview{background:var(--paper);border:1px solid var(--line);padding:16px 20px;min-height:86px;font-size:clamp(24px,4vw,48px);letter-spacing:.02em;line-height:1.35;overflow-wrap:anywhere}.active-glyph-preview{display:flex;align-items:center;gap:12px;width:max-content;max-width:100%;margin-top:9px;padding:8px 12px;background:var(--paper);border:1px solid var(--line)}.active-glyph-preview[hidden]{display:none}.active-glyph-preview .active-label{font-size:8px;letter-spacing:.13em;font-weight:800;color:var(--muted);white-space:nowrap}.active-glyph-preview .active-char{font-size:12px;font-weight:700;color:var(--muted)}.active-glyph-preview img{display:block;height:36px;width:auto;max-width:52px;object-fit:contain}.modal-head .active-glyph-preview{margin-top:0;margin-left:auto;flex:0 1 auto}.modal-head .active-glyph-preview .active-label{font-size:7px}@media(max-width:560px){.modal-head{gap:8px;padding:12px}.modal-title{gap:7px}.modal-title span{font-size:8px}.modal-head .active-glyph-preview{gap:6px;padding:5px 7px}.modal-head .active-glyph-preview img{height:28px;max-width:38px}}
 .overlay{position:fixed;inset:0;background:rgba(20,20,18,.62);z-index:10;display:none;align-items:center;justify-content:center;padding:18px}.overlay.open{display:flex}.modal{width:min(1100px,100%);max-height:94vh;background:var(--bg);display:flex;flex-direction:column;box-shadow:0 20px 80px #0005}.modal-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}.modal-title{display:flex;align-items:baseline;gap:12px}.modal-title strong{font-size:20px;letter-spacing:-.04em}.modal-title span{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}.close{border:0;background:transparent;font-size:24px;line-height:1;padding:4px 8px}.editor-layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;min-height:0;overflow:auto}.canvas-area{padding:20px;min-width:0}.canvas-frame{background:#fff;border:1px solid var(--line);position:relative;width:100%;aspect-ratio:1.55;min-height:260px;overflow:hidden;touch-action:none}.canvas-frame:before{content:"";position:absolute;inset:12% 10%;border:1px dashed #e5e3dc;pointer-events:none}.guide{position:absolute;left:0;right:0;border-top:1px dashed #e5e3dc;pointer-events:none}.guide.mid{top:50%}.guide.base{top:78%}.guide.cap{top:22%}canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}.canvas-note{display:flex;justify-content:space-between;margin-top:9px;font-size:9px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
 .controls{border-left:1px solid var(--line);padding:18px;background:#eeede8}.control-group{margin-bottom:22px}.control-label{display:block;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:10px}.pen-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.pen{background:transparent;border:1px solid var(--line);padding:10px 7px;text-align:left;font-size:10px}.pen.active{background:var(--ink);border-color:var(--ink);color:#fff}.pen small{display:block;font-size:8px;opacity:.65;margin-top:4px}.color-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.swatch{width:25px;height:25px;border:1px solid #aaa;border-radius:50%;padding:0}.swatch.active{outline:2px solid var(--ink);outline-offset:2px}.color-input{width:36px;height:30px;border:0;background:transparent;padding:0}.range-row{display:flex;align-items:center;gap:9px}.range-row input{width:100%;accent-color:var(--ink)}.range-row output{font-size:10px;min-width:26px;text-align:right}.tool-row{display:flex;gap:6px;flex-wrap:wrap}.tool-row .btn{flex:1;padding:9px 7px;font-size:9px}.modal-foot{border-top:1px solid var(--line);padding:13px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px}.foot-left,.foot-right{display:flex;gap:7px}.hint{font-size:9px;color:var(--muted);letter-spacing:.04em}
 @media(max-width:900px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.editor-layout{grid-template-columns:1fr}.controls{border-left:0;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.control-group{margin-bottom:14px}}
@@ -78,7 +78,7 @@ main{max-width:1500px;margin:auto;padding:34px 28px 60px}.intro{display:flex;ali
 </main>
 <div class="overlay" id="overlay">
   <div class="modal">
-    <div class="modal-head"><div class="modal-title"><strong id="editChar">A</strong><span>Glyph drawing workspace</span></div><button class="close" id="closeModal" aria-label="Close">×</button></div>
+    <div class="modal-head"><div class="modal-title"><strong id="editChar">A</strong><span>Glyph drawing workspace</span></div><div class="active-glyph-preview" id="activeGlyphPreview" hidden></div><button class="close" id="closeModal" aria-label="Close">×</button></div>
     <div class="editor-layout">
       <div class="canvas-area">
         <div class="canvas-frame" id="canvasFrame">
@@ -121,7 +121,7 @@ main{max-width:1500px;margin:auto;padding:34px 28px 60px}.intro{display:flex;ali
         </div>
       </aside>
     </div>
-    <div class="modal-foot"><div class="foot-left"><button class="btn" id="prevGlyph">← Previous</button><button class="btn" id="nextGlyph">Next →</button></div><div class="foot-right"><span class="hint">Your drawing is saved in this browser</span><button class="btn dark" id="saveGlyph">Save letter</button></div></div>
+    <div class="modal-foot"><div class="foot-left"><button class="btn" id="prevGlyph">← Previous</button><button class="btn" id="nextGlyph">Next →</button></div><div class="foot-right"><span class="hint">Glyphs are stored efficiently in this browser</span><button class="btn dark" id="saveGlyph">Save letter</button></div></div>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.js"></script>
@@ -129,7 +129,9 @@ main{max-width:1500px;margin:auto;padding:34px 28px 60px}.intro{display:flex;ali
 (()=>{
 const sets={upper:[...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'],lower:[...'abcdefghijklmnopqrstuvwxyz'],numbers:[...'0123456789'],marks:[...'.,!?;:()&@#%+-=*/']};
 const setNames={upper:'UPPERCASE',lower:'LOWERCASE',numbers:'NUMBERS',marks:'SYMBOLS'};
-let activeSet='upper',current='A',glyphs={};let pen='round',color='#171715',size=18,opacity=1,history=[],redoStack=[],drawing=false,last=null,hideGuides=false,strokePoints=[],lastRenderPoint=null;
+let activeSet='upper',current='A',glyphs={},glyphThumbs={};const thumbnailJobs=new Set();let thumbnailQueue=Promise.resolve(),thumbnailGeneration=0,thumbnailPaused=false;let pen='round',color='#171715',size=18,opacity=1,history=[],redoStack=[],drawing=false,last=null,hideGuides=false,strokePoints=[],lastRenderPoint=null;
+const MAX_HISTORY_STATES=10; // includes the current state; caps full-canvas undo memory
+let glyphDb=null;
 let graffitiPressureCurve=0.72,graffitiMode='flare-clean',graffitiMotionSample=null,graffitiMotionLevel=0;
 const DEFAULT_FONT_NAME='Mistype';
 let currentGlyphPreviewMode='stored'; // stored | placeholder | canvas
@@ -150,21 +152,117 @@ function getFontExportNames(){
 }
 ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
 function key(c){return 'letterme-glyph-'+c}
-function loadGlyph(c){try{return localStorage.getItem(key(c))||null}catch(e){return null}}
-function saveGlyph(c,data){try{localStorage.setItem(key(c),data)}catch(e){alert('Browser storage is full. Export your glyphs to keep a backup.')}glyphs[c]=data}
+function loadGlyph(c){return glyphs[c]||null}
+function idbRequest(request){return new Promise((resolve,reject)=>{request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error||new Error('IndexedDB request failed'))})}
+function idbTransactionDone(tx){return new Promise((resolve,reject)=>{tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('IndexedDB transaction failed'));tx.onabort=()=>reject(tx.error||new Error('IndexedDB transaction aborted'))})}
+function loadGlyphPreview(c){return glyphThumbs[c]||glyphs[c]||null}
+function createGlyphThumbnail(dataUrl){
+ return new Promise(resolve=>{
+  const im=new Image();
+  im.onload=()=>{
+   const thumb=document.createElement('canvas');thumb.width=220;thumb.height=140;
+   const t=thumb.getContext('2d');
+   const scale=Math.min(220/(im.naturalWidth||220),140/(im.naturalHeight||140));
+   const w=(im.naturalWidth||220)*scale,h=(im.naturalHeight||140)*scale;
+   t.clearRect(0,0,220,140);t.drawImage(im,(220-w)/2,(140-h)/2,w,h);
+   let result=thumb.toDataURL('image/webp',.74);
+   if(!result.startsWith('data:image/webp'))result=thumb.toDataURL('image/png');
+   thumb.width=1;thumb.height=1;im.onload=null;im.onerror=null;im.src='';resolve(result);
+  };
+  im.onerror=()=>resolve(null);im.src=dataUrl;
+ });
+}
+function persistGlyphThumbnail(c,thumbnail){
+ if(!glyphDb)return;
+ try{
+  const tx=glyphDb.transaction('glyphs','readwrite'),store=tx.objectStore('glyphs'),request=store.get(c);
+  request.onsuccess=()=>{const record=request.result;if(record){record.thumbnail=thumbnail;store.put(record)}};
+ }catch(err){console.warn('Could not persist glyph thumbnail:',err)}
+}
+function ensureGlyphThumbnail(c,data,imgEl){
+ if(!data||thumbnailPaused||glyphThumbs[c]||thumbnailJobs.has(c))return;
+ thumbnailJobs.add(c);
+ const generation=thumbnailGeneration;
+ // Generate one thumbnail during browser idle time, never inside the active
+ // drawing session. Older full-size glyphs are progressively optimized later.
+ thumbnailQueue=thumbnailQueue.then(()=>new Promise(resolve=>{
+  const run=async()=>{
+   if(generation!==thumbnailGeneration||thumbnailPaused||$('overlay').classList.contains('open')){resolve();return}
+   try{
+    const thumb=await createGlyphThumbnail(data);
+    if(thumb&&generation===thumbnailGeneration){
+     glyphThumbs[c]=thumb;persistGlyphThumbnail(c,thumb);
+     document.querySelectorAll('img[data-glyph-preview]').forEach(node=>{if(node.dataset.glyphPreview===c)node.src=thumb});
+    }
+   }catch(err){console.warn('Glyph thumbnail generation failed:',err)}
+   resolve();
+  };
+  if(typeof window.requestIdleCallback==='function')window.requestIdleCallback(run,{timeout:1400});
+  else setTimeout(run,350);
+ })).finally(()=>thumbnailJobs.delete(c));
+}
+function openGlyphDatabase(){return new Promise((resolve,reject)=>{
+ if(!('indexedDB' in window)){reject(new Error('IndexedDB is unavailable'));return}
+ const request=indexedDB.open('mistype-glyph-library',1);
+ request.onupgradeneeded=()=>{const db=request.result;if(!db.objectStoreNames.contains('glyphs'))db.createObjectStore('glyphs',{keyPath:'character'})};
+ request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error||new Error('Could not open glyph storage'));
+ request.onblocked=()=>reject(new Error('Glyph storage upgrade is blocked by another MISTYPE tab'));
+ })}
+async function initGlyphStorage(){
+ const legacy=[];
+ try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith('letterme-glyph-')){const ch=k.slice('letterme-glyph-'.length),image=localStorage.getItem(k);if(ch&&image)legacy.push({character:ch,image,updatedAt:Date.now()})}}}catch(e){}
+ try{
+  glyphDb=await openGlyphDatabase();
+  const readTx=glyphDb.transaction('glyphs','readonly');
+  const records=await idbRequest(readTx.objectStore('glyphs').getAll());
+  records.forEach(record=>{if(record&&record.character&&record.image){glyphs[record.character]=record.image;if(record.thumbnail)glyphThumbs[record.character]=record.thumbnail}});
+  // Legacy localStorage values are treated as the newest copy during migration.
+  if(legacy.length){
+   const tx=glyphDb.transaction('glyphs','readwrite'),done=idbTransactionDone(tx),store=tx.objectStore('glyphs');
+   legacy.forEach(record=>{store.put(record);glyphs[record.character]=record.image});
+   await done;
+  }
+  // Once the durable database has the migrated glyphs, remove bulky data URLs
+  // from localStorage so they no longer consume its small per-origin quota.
+  legacy.forEach(record=>{try{localStorage.removeItem(key(record.character))}catch(e){}});
+  
+ }catch(err){
+  glyphDb=null;
+  legacy.forEach(record=>{glyphs[record.character]=record.image});
+  console.warn('MISTYPE is using fallback glyph storage:',err);
+ }
+}
+async function saveGlyph(c,data,thumbnail){
+ if(glyphDb){
+  try{const tx=glyphDb.transaction('glyphs','readwrite'),done=idbTransactionDone(tx);tx.objectStore('glyphs').put({character:c,image:data,thumbnail:thumbnail||null,updatedAt:Date.now()});await done;glyphs[c]=data;if(thumbnail)glyphThumbs[c]=thumbnail;return true}
+  catch(err){console.warn('IndexedDB save failed; trying local storage:',err)}
+ }
+ try{localStorage.setItem(key(c),data);glyphs[c]=data;if(thumbnail)glyphThumbs[c]=thumbnail;return true}
+ catch(e){return false}
+}
+async function clearGlyphStorage(){
+ if(glyphDb){const tx=glyphDb.transaction('glyphs','readwrite'),done=idbTransactionDone(tx);tx.objectStore('glyphs').clear();await done}
+ for(let i=localStorage.length-1;i>=0;i--){const k=localStorage.key(i);if(k&&(k.startsWith('letterme-glyph-')||k.startsWith('mistype-')||k.startsWith('mistype:'))){try{localStorage.removeItem(k)}catch(e){}}}
+ thumbnailGeneration++;thumbnailPaused=true;glyphs={};glyphThumbs={};thumbnailJobs.clear();thumbnailQueue=Promise.resolve();
+}
 function allChars(){return Object.values(sets).flat()}
 function drawGrid(){
  const grid=$('glyphGrid');grid.innerHTML='';
  sets[activeSet].forEach(ch=>{
-  const data=loadGlyph(ch),card=document.createElement('button');card.className='glyph'+(data?' done':'');card.type='button';
-  const symbol=data?`<img alt="" src="${data}">`:`<span>${escapeHtml(ch)}</span>`;
+  const data=loadGlyph(ch),thumb=loadGlyphPreview(ch),card=document.createElement('button');card.className='glyph'+(data?' done':'');card.type='button';
+  const symbol=data?`<img alt="" data-glyph-preview="${escapeHtml(ch)}" src="${thumb}">`:`<span>${escapeHtml(ch)}</span>`;
   card.innerHTML=`<div class="symbol">${symbol}</div><span class="label">${escapeHtml(ch)}</span><span class="state">${data?'DRAWN':'DRAW'}</span>`;
   card.addEventListener('click',()=>openEditor(ch));grid.appendChild(card);
+  if(data&&!glyphThumbs[ch])ensureGlyphThumbnail(ch,data,card.querySelector('img'));
  });
  const done=sets[activeSet].filter(c=>!!loadGlyph(c)).length;$('progress').textContent=`${done} / ${sets[activeSet].length} DRAWN`;$('setName').textContent=setNames[activeSet];
 }
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function openEditor(ch){
+ thumbnailPaused=true;
+ // Release temporary editing state from the previous glyph before allocating a new canvas history.
+ history=[];redoStack=[];vectorNodes=[];vectorBase=null;vectorDragNode=-1;vectorDragOrigin=null;
+ drawing=false;strokePoints=[];last=null;lastRenderPoint=null;graffitiMotionSample=null;graffitiMotionLevel=0;
  hideSvgSpacing();$('svgSpaceX').value='9';$('svgSpaceY').value='9';
  $('svgSpaceXOut').value='9%';$('svgSpaceYOut').value='9%';
  current=ch;currentGlyphPreviewMode='placeholder';
@@ -182,9 +280,17 @@ function openEditor(ch){
  $('canvasStatus').textContent=data?'EDITING SAVED GLYPH':'NEW GLYPH';
  $('overlay').setAttribute('aria-hidden','false');
 }
-function closeEditor(){ $('overlay').classList.remove('open');drawGrid() }
+function closeEditor(){
+ thumbnailPaused=false;
+ $('overlay').classList.remove('open');
+ // Release full-resolution per-letter undo/vector buffers when leaving the editor.
+ history=[];redoStack=[];vectorNodes=[];vectorBase=null;vectorDragNode=-1;vectorDragOrigin=null;
+ drawing=false;strokePoints=[];last=null;lastRenderPoint=null;graffitiMotionSample=null;graffitiMotionLevel=0;
+ hideSvgSpacing();$('activeGlyphPreview').hidden=true;$('activeGlyphPreview').innerHTML='';
+ drawGrid();renderSpecimen();
+}
 function snapshot(){return ctx.getImageData(0,0,canvas.width,canvas.height)}
-function pushHistory(){history.push(snapshot());if(history.length>40)history.shift();redoStack=[]}
+function pushHistory(){history.push(snapshot());if(history.length>MAX_HISTORY_STATES)history.shift();redoStack=[]}
 function restore(img){ctx.putImageData(img,0,0)}
 function canvasHasInk(){
  const data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
@@ -215,6 +321,10 @@ function start(e){
  e.preventDefault();canvas.setPointerCapture(e.pointerId);
  const p=pos(e);
  if(svgImportActive)hideSvgSpacing();
+ // A vector preview is a temporary editable layer. Commit it before any raster
+ // tool draws, so later marks are added on top of the vector instead of being
+ // lost when the old vectorBase is used to rebuild the preview.
+ if(pen!=='vector'&&vectorNodes.length)finishVector(false);
  if(pen==='vector'){vectorPointerDown(p,e);return}
  drawing=true;currentGlyphPreviewMode='canvas';
  graffitiMotionSample={x:p.x,y:p.y,t:Number.isFinite(e.timeStamp)?e.timeStamp:performance.now()};
@@ -352,9 +462,15 @@ function renderVectorPreview(){
 }
 function finishVector(closePath=false){
  if(!vectorNodes.length)return;
+ // Rebuild from the clean bitmap captured when this vector path began, then
+ // paint the path once. This removes the on-canvas anchor/handle guides while
+ // preserving every bitmap mark that was already present beneath the path.
  if(vectorBase)restore(vectorBase);
- ctx.save();ctx.strokeStyle=color;ctx.lineWidth=size;ctx.globalAlpha=opacity;ctx.lineCap='round';ctx.lineJoin='round';
- renderVectorPath(ctx,closePath);ctx.stroke();ctx.restore();
+ if(vectorNodes.length>=2){
+  ctx.save();ctx.strokeStyle=color;ctx.lineWidth=size;ctx.globalAlpha=opacity;
+  ctx.lineCap='round';ctx.lineJoin='round';
+  renderVectorPath(ctx,closePath);ctx.stroke();ctx.restore();
+ }
  vectorNodes=[];vectorBase=null;vectorDragNode=-1;vectorDirty=false;
  pushHistory();$('canvasStatus').textContent='VECTOR PATH COMMITTED · UNSAVED';updateLiveSpecimen();
 }
@@ -373,6 +489,8 @@ function scheduleLiveSpecimen(){
  requestAnimationFrame(()=>{
   livePreviewPending=false;
   const now=performance.now();
+  // Match v28's responsive preview cadence. Compression is reserved for Save,
+  // never performed repeatedly while the pointer is moving.
   if(now-lastLivePreview>120){lastLivePreview=now;updateLiveSpecimen()}
  });
 }
@@ -522,28 +640,33 @@ function drawBrushSegment(a,b){
 }
 function drawBrushDot(p){drawDotSmooth(p)}
 function drawStroke(a,b){drawBrushSegment(a,b)}
-function cleanGlyphCanvas(){
- const output=document.createElement('canvas');
- output.width=canvas.width;output.height=canvas.height;
- const outCtx=output.getContext('2d');
+function cleanGlyphDataUrl(mime='image/png',quality){
+ let target=canvas,temporary=null;
  if(vectorNodes.length&&vectorBase){
-  // vectorBase is the untouched artwork underneath the editable path UI.
-  outCtx.putImageData(vectorBase,0,0);
+  // Only allocate a second full-size surface while vector handles are active.
+  temporary=document.createElement('canvas');temporary.width=canvas.width;temporary.height=canvas.height;
+  const outCtx=temporary.getContext('2d');outCtx.putImageData(vectorBase,0,0);
   if(vectorNodes.length>=2){
    outCtx.save();outCtx.strokeStyle=color;outCtx.lineWidth=size;
    outCtx.globalAlpha=opacity;outCtx.lineCap='round';outCtx.lineJoin='round';
    renderVectorPath(outCtx,false);outCtx.stroke();outCtx.restore();
   }
- }else{
-  outCtx.drawImage(canvas,0,0);
+  target=temporary;
  }
- return output;
+ let data=target.toDataURL(mime,quality);
+ // Older browsers can silently return PNG when WebP encoding is unsupported.
+ if(mime==='image/webp'&&!data.startsWith('data:image/webp'))data=target.toDataURL('image/png');
+ if(temporary){temporary.width=1;temporary.height=1;temporary=null}
+ return data;
 }
-function cleanGlyphDataUrl(){return cleanGlyphCanvas().toDataURL('image/png')}
-function saveCurrent(){
- const data=cleanGlyphDataUrl();
- currentGlyphPreviewMode='canvas';saveGlyph(current,data);
- $('canvasStatus').textContent='SAVED';drawGrid();return data;
+async function saveCurrent(){
+ // Saving commits vector artwork, then stores a high-quality, compressed image.
+ if(vectorNodes.length)finishVector(false);
+ const data=cleanGlyphDataUrl('image/webp',.94);
+ const thumbnail=await createGlyphThumbnail(data);
+ const saved=await saveGlyph(current,data,thumbnail);
+ if(!saved){$('canvasStatus').textContent='SAVE FAILED · STORAGE FULL';alert('MISTYPE could not save this letter. Export your glyph backup and free browser storage before continuing.');return false}
+ currentGlyphPreviewMode='canvas';$('canvasStatus').textContent='SAVED';drawGrid();return data;
 }
 function download(data,name){const a=document.createElement('a');a.href=data;a.download=name;a.click()}
 canvas.addEventListener('pointermove',e=>{
@@ -559,7 +682,7 @@ canvas.addEventListener('pointermove',e=>{
 });
 canvas.addEventListener('pointerdown',start);canvas.addEventListener('pointermove',move);canvas.addEventListener('pointerup',end);canvas.addEventListener('pointercancel',end);canvas.addEventListener('lostpointercapture',end);
 $('closeModal').onclick=closeEditor;$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))closeEditor()});
-$('saveGlyph').onclick=()=>{saveCurrent();closeEditor()};
+$('saveGlyph').onclick=async()=>{const b=$('saveGlyph');b.disabled=true;try{const ok=await saveCurrent();if(ok)closeEditor()}finally{b.disabled=false}};
 $('undo').onclick=undo;$('redo').onclick=redo;$('clear').onclick=()=>{
  hideSvgSpacing();$('svgSpaceX').value='9';$('svgSpaceY').value='9';
  $('svgSpaceXOut').value='9%';$('svgSpaceYOut').value='9%';
@@ -581,7 +704,14 @@ $('pressureCurve').oninput=e=>{
 };
 
 
-$('penGrid').addEventListener('click',e=>{const b=e.target.closest('[data-pen]');if(!b)return;pen=b.dataset.pen;document.querySelectorAll('.pen').forEach(x=>x.classList.toggle('active',x===b));$('vectorHintInline').style.display=pen==='vector'?'inline':'none';
+$('penGrid').addEventListener('click',e=>{
+ const b=e.target.closest('[data-pen]');if(!b)return;
+ const nextPen=b.dataset.pen;
+ // Switching away from Vector commits that path into the shared glyph bitmap.
+ // Every following tool then layers onto the same artwork, regardless of order.
+ if(pen==='vector'&&nextPen!=='vector'&&vectorNodes.length)finishVector(false);
+ pen=nextPen;
+ document.querySelectorAll('.pen').forEach(x=>x.classList.toggle('active',x===b));$('vectorHintInline').style.display=pen==='vector'?'inline':'none';
  $('graffitiPressureGroup').style.display=pen==='graffiti'?'block':'none';
  $('graffitiModeGroup').style.display=pen==='graffiti'?'block':'none';
  if(pen==='vector')$('canvasStatus').textContent='VECTOR · CLICK TO ADD POINTS';else $('canvasStatus').textContent='READY'});
@@ -589,34 +719,26 @@ function setColor(c){color=c;$('colorPicker').value=c;document.querySelectorAll(
 $('swatches').addEventListener('click',e=>{const b=e.target.closest('[data-color]');if(b)setColor(b.dataset.color)});$('colorPicker').oninput=e=>{color=e.target.value;document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('active'))};
 $('flipGuide').onclick=()=>{hideGuides=!hideGuides;document.querySelectorAll('.guide,.canvas-frame:before').forEach(x=>x.style.display=hideGuides?'none':'block');$('flipGuide').textContent=hideGuides?'Show guides':'Hide guides'};
 $('downloadPng').onclick=()=>download(cleanGlyphDataUrl(),`mistype-${current}.png`);
-function moveGlyph(dir){const arr=sets[activeSet],i=arr.indexOf(current),next=arr[(i+dir+arr.length)%arr.length];saveCurrent();openEditor(next)}
+async function moveGlyph(dir){const arr=sets[activeSet],i=arr.indexOf(current),next=arr[(i+dir+arr.length)%arr.length];const ok=await saveCurrent();if(ok)openEditor(next)}
 $('prevGlyph').onclick=()=>moveGlyph(-1);$('nextGlyph').onclick=()=>moveGlyph(1);
-$('tabs').onclick=e=>{const b=e.target.closest('[data-set]');if(!b)return;activeSet=b.dataset.set;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));drawGrid()};
-$('resetAll').addEventListener('click',()=>{
- // Remove every known MISTYPE/legacy glyph key, plus the font-name preference.
- // Enumerate keys backwards so removal cannot skip entries in browser storage implementations.
- try{
-  const removeKeys=[];
-  for(let i=localStorage.length-1;i>=0;i--){
-   const k=localStorage.key(i);
-   if(k&&(k.startsWith('letterme-glyph-')||k.startsWith('mistype-')||k.startsWith('mistype:')))removeKeys.push(k);
-  }
-  allChars().forEach(ch=>removeKeys.push(key(ch)));
-  removeKeys.push('mistype-font-name');
-  [...new Set(removeKeys)].forEach(k=>localStorage.removeItem(k));
-  const remaining=allChars().filter(ch=>localStorage.getItem(key(ch))!==null);
-  if(remaining.length||localStorage.getItem('mistype-font-name')!==null)throw new Error('Some saved MISTYPE data could not be removed.');
- }catch(err){
-  alert('MISTYPE could not clear its saved drawings. Check that browser storage is enabled for this page, then try again.');
-  return;
- }
- // Clear visible state immediately; the reload below also reinitializes every tool/control.
+$('tabs').onclick=e=>{
+ const b=e.target.closest('[data-set]');if(!b)return;
+ // Preserve any custom specimen text for the group being left.
+ const specimen=$('specimen');
+ specimenTexts[activeSet]=specimen.dataset.rawText??specimenText;
+ activeSet=b.dataset.set;
+ document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));
+ drawGrid();
+ specimenText=specimenTexts[activeSet]??defaultSpecimenTexts[activeSet];
+ specimen.dataset.rawText=specimenText;
+ renderSpecimen();
+};
+$('resetAll').addEventListener('click',async()=>{
+ try{await clearGlyphStorage();localStorage.removeItem('mistype-font-name')}
+ catch(err){alert('MISTYPE could not clear its saved drawings. Close other MISTYPE tabs and try again.');return}
  glyphs={};fontName=DEFAULT_FONT_NAME;activeSet='upper';current='A';
- $('fontName').value=DEFAULT_FONT_NAME;
- $('specimen').textContent='THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.';
- $('overlay').classList.remove('open');
- drawGrid();renderSpecimen();
- window.location.reload();
+ $('fontName').value=DEFAULT_FONT_NAME;specimenTexts={...defaultSpecimenTexts};specimenText=defaultSpecimenTexts.upper;$('specimen').textContent=specimenText;$('specimen').dataset.rawText=specimenText;
+ $('overlay').classList.remove('open');drawGrid();renderSpecimen();window.location.reload();
 });
 function downloadBlob(blob,name){
  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();
@@ -684,6 +806,7 @@ async function makeFontBuffer(familyName=DEFAULT_FONT_NAME){
  const font=new window.opentype.Font({familyName:String(familyName||DEFAULT_FONT_NAME).slice(0,64),styleName:'Regular',unitsPerEm:1000,ascender:800,descender:-200,glyphs});
  return font.toArrayBuffer();
 }
+$('exportPack').disabled=true;
 $('exportPack').onclick=async()=>{
  const chars=allChars(),items=chars.map(c=>({character:c,png:loadGlyph(c)})).filter(x=>x.png);
  if(!items.length){alert('Draw at least one glyph first.');return}
@@ -694,54 +817,57 @@ $('exportPack').onclick=async()=>{
   // Both extensions are OpenType containers with TrueType outlines, maximizing compatibility.
   downloadBlob(new Blob([buffer],{type:'font/ttf'}),exportNames.fileName+'.ttf');
   setTimeout(()=>downloadBlob(new Blob([buffer],{type:'font/otf'}),exportNames.fileName+'.otf'),350);
-  const data={app:'MISTYPE',fontName:exportNames.familyName,version:27,exported:new Date().toISOString(),glyphs:items};
+  const data={app:'MISTYPE',fontName:exportNames.familyName,version:32,exported:new Date().toISOString(),glyphs:items};
   setTimeout(()=>downloadBlob(new Blob([JSON.stringify(data)],{type:'application/json'}),exportNames.fileName+'-glyphs.json'),700);
   $('canvasStatus').textContent='FONT EXPORT READY';
  }catch(err){alert('Font export failed: '+err.message)}
  finally{button.disabled=false;button.textContent='Export font / glyphs'}
 };
-function renderSpecimen(){
- const el=$('specimen'),text=el.innerText||'';el.innerHTML='';
- for(const ch of text){const data=loadGlyph(ch);if(data){const img=document.createElement('img');img.src=data;img.alt=ch;img.style.cssText='height:1em;width:auto;max-width:1.58em;object-fit:contain;vertical-align:-.12em;margin-right:.06em';el.appendChild(img)}else el.appendChild(document.createTextNode(ch))}
+const defaultSpecimenTexts={
+ upper:'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.',
+ lower:'the quick brown fox jumps over the lazy dog.',
+ numbers:sets.numbers.join(''),
+ marks:sets.marks.join(' ')
+};
+let specimenTexts={...defaultSpecimenTexts};
+let specimenText=defaultSpecimenTexts.upper;
+function appendPreviewGlyph(el,ch,data){
+ const img=document.createElement('img');img.src=data;img.alt=ch;img.dataset.glyphPreview=ch;
+ img.style.cssText='height:1em;width:auto;max-width:1.58em;object-fit:contain;vertical-align:-.13em;margin:0 .06em';
+ el.appendChild(img);
+ if(data===glyphs[ch]&&!glyphThumbs[ch])ensureGlyphThumbnail(ch,data,img);
 }
-let specimenText='THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.';
 function renderSpecimen(){
- const el=$('specimen'),text=el.dataset.rawText!==undefined?el.dataset.rawText:specimenText;
- el.dataset.rawText=text;el.innerHTML='';
- for(const ch of text){
-  const data=loadGlyph(ch);
-  if(data){
-   const img=document.createElement('img');img.src=data;img.alt=ch;
-   img.style.cssText='height:1em;width:auto;max-width:1.58em;object-fit:contain;vertical-align:-.13em;margin:0 .06em';
-   el.appendChild(img);
-  }else el.appendChild(document.createTextNode(ch));
- }
+ const el=$('specimen'),text=el.dataset.rawText!==undefined?el.dataset.rawText:specimenText;el.dataset.rawText=text;el.innerHTML='';
+ for(const ch of text){const data=loadGlyphPreview(ch);if(data)appendPreviewGlyph(el,ch,data);else el.appendChild(document.createTextNode(ch))}
+}
+function updateActiveGlyphPreview(data){
+ const box=$('activeGlyphPreview');
+ if(!$('overlay').classList.contains('open')){box.hidden=true;box.innerHTML='';return}
+ const text=$('specimen').dataset.rawText??specimenText;
+ if(text.includes(current)){box.hidden=true;box.innerHTML='';return}
+ box.hidden=false;box.innerHTML='';
+ const label=document.createElement('span');label.className='active-label';label.textContent='ACTIVE GLYPH';box.appendChild(label);
+ if(data){const img=document.createElement('img');img.src=data;img.alt=current;box.appendChild(img)}
+ else{const ch=document.createElement('span');ch.className='active-char';ch.textContent=current;box.appendChild(ch)}
 }
 function updateLiveSpecimen(){
- const data=cleanGlyphDataUrl();
+ // Use the same PNG preview path and cadence as v28; WebP compression only
+ // happens on Save, so it cannot interrupt an active drawing gesture.
+ const data=currentGlyphPreviewMode==='canvas'?cleanGlyphDataUrl():null;
  const el=$('specimen'),text=el.dataset.rawText??specimenText;
  el.innerHTML='';
  for(const ch of text){
-  if(ch===current&&currentGlyphPreviewMode==='canvas'){
-   const img=document.createElement('img');img.src=data;img.alt=ch;
-   img.style.cssText='height:1em;width:auto;max-width:1.58em;object-fit:contain;vertical-align:-.13em;margin:0 .06em';
-   el.appendChild(img);
-  }else if(ch===current&&currentGlyphPreviewMode==='placeholder'){
-   el.appendChild(document.createTextNode(ch));
-  }else{
-   const saved=loadGlyph(ch);
-   if(saved){
-    const img=document.createElement('img');img.src=saved;img.alt=ch;
-    img.style.cssText='height:1em;width:auto;max-width:1.58em;object-fit:contain;vertical-align:-.13em;margin:0 .06em';
-    el.appendChild(img);
-   }else el.appendChild(document.createTextNode(ch));
-  }
+  if(ch===current&&currentGlyphPreviewMode==='canvas'&&data){appendPreviewGlyph(el,ch,data)}
+  else if(ch===current&&currentGlyphPreviewMode==='placeholder'){el.appendChild(document.createTextNode(ch))}
+  else{const saved=loadGlyphPreview(ch);if(saved)appendPreviewGlyph(el,ch,saved);else el.appendChild(document.createTextNode(ch))}
  }
+ updateActiveGlyphPreview(data);
 }
 $('specimen').addEventListener('input',()=>{
  const el=$('specimen');
  // Preserve editable text and rerender glyphs on blur to avoid interrupting typing.
- specimenText=el.innerText.replace(/\n/g,'\n');el.dataset.rawText=specimenText;
+ specimenText=el.innerText.replace(/\n/g,'\n');el.dataset.rawText=specimenText;specimenTexts[activeSet]=specimenText;
 });
 $('specimen').addEventListener('blur',renderSpecimen);
 function hideSvgSpacing(){
@@ -810,7 +936,7 @@ $('vectorFile').addEventListener('change',e=>{
  };
  reader.readAsText(file);e.target.value='';
 });
-drawGrid();renderSpecimen();
+initGlyphStorage().then(()=>{drawGrid();renderSpecimen();$('exportPack').disabled=false}).catch(err=>{console.error('MISTYPE storage initialization failed:',err);drawGrid();renderSpecimen();$('exportPack').disabled=false});
 })();
 </script>
 </body>
