@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MISTYPE v33 — Experimental type studio</title>
+<title>MISTYPE v34 — Experimental type studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -323,9 +323,25 @@ function redo(){if(!redoStack.length)return;const s=redoStack.pop();history.push
 }
 function pos(e){
  const r=canvas.getBoundingClientRect();
- return {x:(e.clientX-r.left)*canvas.width/r.width,y:(e.clientY-r.top)*canvas.height/r.height,pressure:(e.pointerType==='pen'&&Number.isFinite(e.pressure))?Math.max(0,Math.min(1,e.pressure)):
-  (Number.isFinite(e.pressure)&&e.pressure!==0.5)?Math.max(0,Math.min(1,e.pressure)):0.5,
-pointerType:e.pointerType||'unknown'};
+ const pointerType=e.pointerType||'unknown';
+ let pressure=.5;
+ if(pointerType==='pen'&&Number.isFinite(e.pressure)){
+  // Keep real Apple Pencil / stylus pressure when the device supplies it.
+  pressure=Math.max(0,Math.min(1,e.pressure));
+ }else if(pointerType==='touch'&&pen!=='graffiti'&&pen!=='vector'){
+  // iOS Safari can report pressure=0 for a finger pointer even while it is
+  // actively moving. For non-spray raster tools use a stable full-width touch.
+  // Graffiti keeps its existing pressure/spread behavior unchanged.
+  pressure=1;
+ }else if(Number.isFinite(e.pressure)&&e.pressure!==0.5){
+  pressure=Math.max(0,Math.min(1,e.pressure));
+ }
+ return {
+  x:(e.clientX-r.left)*canvas.width/r.width,
+  y:(e.clientY-r.top)*canvas.height/r.height,
+  pressure,
+  pointerType
+ };
 }
 function start(e){
  e.preventDefault();canvas.setPointerCapture(e.pointerId);
@@ -702,7 +718,15 @@ $('undo').onclick=undo;$('redo').onclick=redo;$('clear').onclick=()=>{
  history=[snapshot()];redoStack=[];
  $('canvasStatus').textContent='CANVAS RESET';updateLiveSpecimen();
 };
-$('size').oninput=e=>{size=+e.target.value;$('sizeOut').value=size};$('opacity').oninput=e=>{opacity=+e.target.value/100;$('opacityOut').value=e.target.value+'%'};
+function updateBrushSize(e){
+ const next=Number(e.target.value);
+ if(Number.isFinite(next))size=Math.max(2,Math.min(90,next));
+ $('sizeOut').value=String(size);
+}
+// iOS Safari may commit a native range change on release; listen to both events.
+$('size').addEventListener('input',updateBrushSize);
+$('size').addEventListener('change',updateBrushSize);
+$('opacity').oninput=e=>{opacity=+e.target.value/100;$('opacityOut').value=e.target.value+'%'};
 $('sprayModes').addEventListener('click',e=>{
  const b=e.target.closest('[data-mode]');if(!b)return;
  graffitiMode=b.dataset.mode;
@@ -827,7 +851,7 @@ $('exportPack').onclick=async()=>{
   // Both extensions are OpenType containers with TrueType outlines, maximizing compatibility.
   downloadBlob(new Blob([buffer],{type:'font/ttf'}),exportNames.fileName+'.ttf');
   setTimeout(()=>downloadBlob(new Blob([buffer],{type:'font/otf'}),exportNames.fileName+'.otf'),350);
-  const data={app:'MISTYPE',fontName:exportNames.familyName,version:33,exported:new Date().toISOString(),glyphs:items};
+  const data={app:'MISTYPE',fontName:exportNames.familyName,version:34,exported:new Date().toISOString(),glyphs:items};
   setTimeout(()=>downloadBlob(new Blob([JSON.stringify(data)],{type:'application/json'}),exportNames.fileName+'-glyphs.json'),700);
   $('canvasStatus').textContent='FONT EXPORT READY';
  }catch(err){alert('Font export failed: '+err.message)}
