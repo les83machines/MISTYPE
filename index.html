@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MISTYPE v32 — Experimental type studio</title>
+<title>MISTYPE v33 — Experimental type studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@ main{max-width:1500px;margin:auto;padding:34px 28px 60px}.intro{display:flex;ali
 .overlay{position:fixed;inset:0;background:rgba(20,20,18,.62);z-index:10;display:none;align-items:center;justify-content:center;padding:18px}.overlay.open{display:flex}.modal{width:min(1100px,100%);max-height:94vh;background:var(--bg);display:flex;flex-direction:column;box-shadow:0 20px 80px #0005}.modal-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}.modal-title{display:flex;align-items:baseline;gap:12px}.modal-title strong{font-size:20px;letter-spacing:-.04em}.modal-title span{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}.close{border:0;background:transparent;font-size:24px;line-height:1;padding:4px 8px}.editor-layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;min-height:0;overflow:auto}.canvas-area{padding:20px;min-width:0}.canvas-frame{background:#fff;border:1px solid var(--line);position:relative;width:100%;aspect-ratio:1.55;min-height:260px;overflow:hidden;touch-action:none}.canvas-frame:before{content:"";position:absolute;inset:12% 10%;border:1px dashed #e5e3dc;pointer-events:none}.guide{position:absolute;left:0;right:0;border-top:1px dashed #e5e3dc;pointer-events:none}.guide.mid{top:50%}.guide.base{top:78%}.guide.cap{top:22%}canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}.canvas-note{display:flex;justify-content:space-between;margin-top:9px;font-size:9px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
 .controls{border-left:1px solid var(--line);padding:18px;background:#eeede8}.control-group{margin-bottom:22px}.control-label{display:block;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:10px}.pen-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.pen{background:transparent;border:1px solid var(--line);padding:10px 7px;text-align:left;font-size:10px}.pen.active{background:var(--ink);border-color:var(--ink);color:#fff}.pen small{display:block;font-size:8px;opacity:.65;margin-top:4px}.color-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.swatch{width:25px;height:25px;border:1px solid #aaa;border-radius:50%;padding:0}.swatch.active{outline:2px solid var(--ink);outline-offset:2px}.color-input{width:36px;height:30px;border:0;background:transparent;padding:0}.range-row{display:flex;align-items:center;gap:9px}.range-row input{width:100%;accent-color:var(--ink)}.range-row output{font-size:10px;min-width:26px;text-align:right}.tool-row{display:flex;gap:6px;flex-wrap:wrap}.tool-row .btn{flex:1;padding:9px 7px;font-size:9px}.modal-foot{border-top:1px solid var(--line);padding:13px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px}.foot-left,.foot-right{display:flex;gap:7px}.hint{font-size:9px;color:var(--muted);letter-spacing:.04em}
 @media(max-width:900px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.editor-layout{grid-template-columns:1fr}.controls{border-left:0;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.control-group{margin-bottom:14px}}
-@media(max-width:560px){.topbar{padding:0 14px}.brand span{display:none}.top-actions .btn{padding:8px}.main,main{padding:24px 14px 40px}.intro{display:block}.intro-copy{display:block}.intro h1{white-space:normal;line-height:1.02}.intro p{margin-top:10px}.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.glyph{min-height:116px}.glyph .symbol{height:76px;font-size:60px}.toolbar{align-items:flex-start}.toolbar-right{width:100%;justify-content:space-between}.controls{grid-template-columns:1fr 1fr;padding:13px}.modal-foot{padding:10px}.hint{display:none}}
+@media(max-width:560px){.topbar{padding:0 14px}.brand span{display:none}.top-actions .btn{padding:8px}.main,main{padding:24px 14px 40px}.intro{display:block}.intro-copy{display:block}.intro h1{white-space:normal;line-height:1.02}.intro p{margin-top:10px}.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.glyph{min-height:116px}.glyph .symbol{height:76px;font-size:60px}.toolbar{align-items:flex-start}.toolbar-right{width:100%;justify-content:space-between}.controls{grid-template-columns:1fr 1fr;padding:13px}.canvas-frame{aspect-ratio:1200 / 760;min-height:0}.modal-foot{padding:10px}.hint{display:none}}
 
 
 .spray-mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
@@ -44,6 +44,16 @@ main{max-width:1500px;margin:auto;padding:34px 28px 60px}.intro{display:flex;ali
 .font-name-control input:focus{border-color:var(--ink)}
 @media(max-width:900px){.tabs{flex-wrap:wrap;align-items:center}.font-name-control{margin-left:0;padding-left:8px}}
 @media(max-width:560px){.font-name-control{width:100%;padding:7px 0 0;border-left:0}.font-name-control input{flex:1;width:auto}}
+
+@media (pointer:coarse){
+ .swatch{width:32px;height:32px}
+ .color-input{width:42px;height:38px}
+ .pen{min-height:46px;padding:11px 8px}
+ .btn{min-height:40px}
+ .close{min-width:44px;min-height:44px;display:grid;place-items:center}
+ input[type=range]{min-height:32px}
+}
+
 </style>
 </head>
 <body>
@@ -817,7 +827,7 @@ $('exportPack').onclick=async()=>{
   // Both extensions are OpenType containers with TrueType outlines, maximizing compatibility.
   downloadBlob(new Blob([buffer],{type:'font/ttf'}),exportNames.fileName+'.ttf');
   setTimeout(()=>downloadBlob(new Blob([buffer],{type:'font/otf'}),exportNames.fileName+'.otf'),350);
-  const data={app:'MISTYPE',fontName:exportNames.familyName,version:32,exported:new Date().toISOString(),glyphs:items};
+  const data={app:'MISTYPE',fontName:exportNames.familyName,version:33,exported:new Date().toISOString(),glyphs:items};
   setTimeout(()=>downloadBlob(new Blob([JSON.stringify(data)],{type:'application/json'}),exportNames.fileName+'-glyphs.json'),700);
   $('canvasStatus').textContent='FONT EXPORT READY';
  }catch(err){alert('Font export failed: '+err.message)}
